@@ -1,0 +1,31 @@
+body {
+    background-color: #ddd;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+h1 {
+    font-size: 1.2rem;
+}
+
+#board {
+    width: 80vw;
+    height: 80vh;
+    background-color: red;
+    overflow: hidden;
+    margin-left: 10%;
+    margin-top: 10%;
+    position: relative;
+}
+
+#player {
+    background-color: black;
+    position: absolute;
+}
+
+.target {
+    background-color: blueviolet;
+    position: absolute;
+}
