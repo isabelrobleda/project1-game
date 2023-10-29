@@ -1,7 +1,7 @@
 class Player {
     constructor(){
         this.width = 5;
-        this.height = 10;
+        this.height = 5;
         this.positionX = 0
         this.positionY = 40 - (this.height / 2)
 
@@ -32,8 +32,8 @@ class Target {
     constructor(){
         this.width = 5;
         this.height = 5;
-        this.positionX = 50 //// generate random number between 0 and 100 - this.width. original formula Math.floor(Math.random() * (max - min + 1)) + min;
-        this.positionY = 100;
+        this.positionX = Math.floor(Math.random() * (100 - this.width + 1) + this.width)
+        this.positionY = Math.floor(Math.random() * (100 - this.height + 1))
         this.targetElm = null;
 
         this.createDomElement()
@@ -50,12 +50,11 @@ class Target {
         const parentElem = document.getElementById("board")
         parentElem.appendChild(this.targetElm)
     }
-    moveDown() {    
-        this.positionY--
+    appearingTarget() {    
+        this.positionY + this.positionX
         this.targetElm.style.bottom = this.positionY + "vh"
     }
 }
-
 
 const player = new Player();
 const targetArr = []
@@ -63,23 +62,17 @@ const targetArr = []
 setInterval(() => {
     const newTarget = new Target();
     targetArr.push(newTarget);
-}, 2000);
 
-setInterval(() => {
-    targetArr.forEach((targetItem) => {
-        targetItem.moveDown()
+    setTimeout(() => {
+        newTarget.targetElm.remove()
+        targetArr.shift();
+    }, 2000) 
 
-        //// remove obstacles if outside
-        if (targetItem.positionY < 0 - targetItem.height) {
-            ///remove dom element
-            targetItem.targetElm.remove()
+}, 1000);
 
-            ///remove from array
-            targetArr.shift()
-        }
 
-    })
-}, 20) 
+
+
 
 document.addEventListener("keydown", (e) => {
     switch (e.code) {

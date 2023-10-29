@@ -7,13 +7,15 @@ body {
 }
 
 h1 {
-    font-size: 1.2rem;
+    font-size: 24px;
+    line-height: 32px;
+    margin-top: calc(50vh - 16px);
 }
 
 #board {
     width: 80vw;
     height: 80vh;
-    background-color: red;
+    background-color: lightsalmon;
     overflow: hidden;
     margin-left: 10%;
     margin-top: 10%;
@@ -21,11 +23,11 @@ h1 {
 }
 
 #player {
-    background-color: black;
+    background-color: lightcyan;
     position: absolute;
 }
 
 .target {
-    background-color: blueviolet;
+    background-color: lightslategray;
     position: absolute;
 }
