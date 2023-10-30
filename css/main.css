@@ -8,8 +8,9 @@ body {
 
 h1 {
     font-size: 24px;
-    line-height: 32px;
-    margin-top: calc(50vh - 16px);
+    padding-top: 10px;
+    text-align: start;
+    margin-left: 10px;
 }
 
 #board {
@@ -17,8 +18,8 @@ h1 {
     height: 80vh;
     background-color: lightsalmon;
     overflow: hidden;
-    margin-left: 10%;
-    margin-top: 10%;
+    margin-left: 10px;
+    padding-top: 2%;
     position: relative;
 }
 
@@ -29,5 +30,10 @@ h1 {
 
 .target {
     background-color: lightslategray;
+    position: absolute;
+}
+
+.bullet {
+    background-color: black;
     position: absolute;
 }
