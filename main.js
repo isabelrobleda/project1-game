@@ -1,7 +1,7 @@
 class Player {
     constructor(){
-        this.width = 5;
-        this.height = 5;
+        this.width = 6;
+        this.height = 12;
         this.positionX = 0
         this.positionY = 320
 
@@ -29,12 +29,12 @@ class Player {
 
 class Target {
     constructor(){
-        this.width = 5;
-        this.height = 5;
+        this.width = 3.5;
+        this.height = 9;
         this.positionX = Math.floor(Math.random() * (100 - this.width + 1) + (this.width * 2))
         this.positionY = Math.floor(Math.random() * (100 - this.height + 1))
         this.targetElm = null;
-
+        
         this.createElement()
     }
 
@@ -49,19 +49,14 @@ class Target {
         const parentElem = document.getElementById("board")
         parentElem.appendChild(this.targetElm)
     }
-    appearingTarget() {    
-        this.targetElm.style.left = this.positionX + "vw";
-        this.targetElm.style.bottom = this.positionY + "vh";
-    }
 }
 
 class Bullet  {
     constructor(positionX, positionY){
-       
         this.width = 1
-        this.height = 1
-        this.positionX = positionX 
-        this.positionY = positionY + 14
+        this.height = 0.9
+        this.positionX = positionX + 40
+        this.positionY = positionY + 60
         this.newBullet()
 
     }
@@ -69,21 +64,21 @@ class Bullet  {
     newBullet(){
         this.bulletElm = document.createElement("div")
         this.bulletElm.classList.add("bullet")
-        this.bulletElm.style.width = this.width + "vw"
-        this.bulletElm.style.height = this.height + "vh"
+        this.bulletElm.style.width = this.width + "1px"
+        this.bulletElm.style.height = this.height + "1px"
         this.bulletElm.style.left = this.positionX + "px"
         this.bulletElm.style.bottom = this.positionY + "px"
 
         const parentElem = document.getElementById("board")
         parentElem.appendChild(this.bulletElm)
     }
+
     updatePosition(){
         this.bulletElm.style.left = this.positionX + "px"
-
     }
+
     moveRight(){
         this.positionX++
-       
     }
 }
 
@@ -91,20 +86,19 @@ const player = new Player();
 const targetArr = []
 const bulletArr = []
 
-setInterval(() => {
-    targetArr.forEach((target) => {
-        target.appearingTarget();
-    });
-}, 3000); 
 
 setInterval(() => {
     const newTarget = new Target();
     targetArr.push(newTarget);
-    
+
+    if(newTarget.positionY < 0 - newTarget.height && newTarget.positionX > 100 - newTarget.width){
+        newTarget.targetElm.remove()
+        targetArr.shift()
+    }
     setTimeout(() => {
         newTarget.targetElm.remove()
         targetArr.shift();
-    }, 2000) 
+    }, 3000) 
 
 }, 1000);
 
@@ -113,25 +107,39 @@ setInterval(() => {
     bulletArr.push(newBullet); 
 }, 1000)
 
+
+let counter = 0;
 setInterval(() => {
-    player.updatePosition()
+    player.updatePosition();
     bulletArr.forEach((newBullet) => {
-        newBullet.moveRight()
-        newBullet.updatePosition()
+        newBullet.moveRight();
+        newBullet.updatePosition();
 
         targetArr.forEach((target) => {
+            const bulletInstance = newBullet.bulletElm.getBoundingClientRect();
+            const targetInstance = target.targetElm.getBoundingClientRect();
+            
+            document.getElementById('counter-value').innerHTML = counter
+            
             if (
-                target.positionX < newBullet.positionX + newBullet.width &&
-                target.positionX + target.width > newBullet.positionX &&
-                target.positionY < newBullet.positionY + newBullet.height &&
-                target.positionY + target.height > newBullet.positionY
+                bulletInstance.left < targetInstance.right &&
+                bulletInstance.right > targetInstance.left &&
+                bulletInstance.top < targetInstance.bottom &&
+                bulletInstance.bottom > targetInstance.top 
             ) {
+                newBullet.bulletElm.remove();
+                target.targetElm.remove();
+                bulletArr.shift();
+                targetArr.shift();
+                counter++
+            }
+
+            if(counter === 5){
                 location.href = "./win.html"
             }
-        })
-    })
-}, 5)
-
+        });
+    });
+}, 5);
 
 document.addEventListener("keydown", (e) => {
     switch (e.code) {

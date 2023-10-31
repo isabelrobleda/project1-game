@@ -2,38 +2,50 @@ body {
     background-color: #ddd;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: max-content;
     text-align: center;
 }
 
-h1 {
+#main-h1 {
     font-size: 24px;
     padding-top: 10px;
-    text-align: start;
+    text-align: center;
+    margin-left: 10px;
+}
+
+h2 {
+    font-size: 16px;
+    text-align: center;
     margin-left: 10px;
 }
 
 #board {
-    width: 80vw;
+    width: 100vw;
     height: 80vh;
-    background-color: lightsalmon;
+    background-image: url("../images/forest_background.png");
     overflow: hidden;
-    margin-left: 10px;
-    padding-top: 2%;
     position: relative;
 }
 
 #player {
-    background-color: lightcyan;
+    background-image: url("../images/llama_player.png");
     position: absolute;
 }
 
 .target {
-    background-color: lightslategray;
+    background-image: url("../images/CSS3_logo_and_wordmark.png");
     position: absolute;
 }
 
 .bullet {
-    background-color: black;
+    background-color: lightblue;
     position: absolute;
+}
+
+
+#btn {
+    font-size: 16px;
+    text-align: start;
+    align-items: start;
+    margin-left: 10px;
 }
