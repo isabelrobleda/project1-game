@@ -20,7 +20,7 @@ OOP game built with web technologies (html, css, javascript) and using DOM manip
 Fix:
 - [x] create if statement when 5 targets spitted, then go to "win" html
 - [ ] remove obstacles as they go outside board
-- [ ] prevent player from going outside
+- [x] prevent player from going outside
 - [ ] fix collision bugs as sometimes it does not count when hitted 
 
 

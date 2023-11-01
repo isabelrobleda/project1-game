@@ -1,21 +1,22 @@
 class Player {
     constructor(){
-        this.width = 4;
-        this.height = 8;
+        this.width = 100
+        this.height = 200
         this.positionX = 0
-        this.positionY = 320
+        this.positionY = 300
 
         this.playerElem = document.getElementById("player")
-        this.playerElem.style.width = this.width + "vw"
-        this.playerElem.style.height = this.height + "vh"
+        this.playerElem.style.width = this.width + "px"
+        this.playerElem.style.height = this.height + "px"
         this.playerElem.style.left = this.positionX + "px"
         this.playerElem.style.bottom = this.positionY + "px"
         
     } 
-
+    
     updatePosition() {
         this.playerElem.style.bottom = this.positionY + "px"
     }
+
     moveUp(){
         this.positionY += 10
     }
@@ -28,35 +29,43 @@ class Player {
 }
 
 class Target {
-    constructor(){
-        this.width = 2;
-        this.height = 5;
-        this.positionX = Math.floor(Math.random() * (100 - this.width + 1) + (this.width * 2))
-        this.positionY = Math.floor(Math.random() * (100 - this.height + 1))
+    constructor() {
+        this.width = 40
+        this.height = 50
+        const playerWidth = 100;
+        const boardWidth = 1600;
+        this.positionX = Math.floor(Math.random() * (boardWidth - this.width - playerWidth + 1)) + playerWidth; 
+        this.positionY = Math.floor(Math.random() * (boardWidth - this.height - playerWidth + 1)) + playerWidth; 
+       
+        
         this.targetElm = null;
         
         this.createElement()
+        
     }
 
-    createElement(){
-        this.targetElm = document.createElement("div")
-        this.targetElm.classList.add("target")
-        this.targetElm.style.width = this.width + "vw"
-        this.targetElm.style.height = this.height + "vh"
-        this.targetElm.style.left = this.positionX + "vw"
-        this.targetElm.style.bottom = this.positionY + "vh"
+    
+        createElement(){
+            this.targetElm = document.createElement("div")
+            this.targetElm.classList.add("target")
+            this.targetElm.style.width = this.width + "px"
+            this.targetElm.style.height = this.height + "px"
+            this.targetElm.style.left = this.positionX + "px"
+            this.targetElm.style.bottom = this.positionY + "px"
 
-        const parentElem = document.getElementById("board")
-        parentElem.appendChild(this.targetElm)
-    }
+            const parentElem = document.getElementById("board")
+            parentElem.appendChild(this.targetElm)
+        }
+    
 }
 
 class Bullet  {
     constructor(positionX, positionY){
-        this.width = 1
-        this.height = 0.9
-        this.positionX = positionX + 40
-        this.positionY = positionY + 60
+        this.width = 8
+        this.height = 8
+        this.positionX = positionX + 60
+        this.positionY = positionY + 100
+        
         this.newBullet()
 
     }
@@ -64,8 +73,8 @@ class Bullet  {
     newBullet(){
         this.bulletElm = document.createElement("div")
         this.bulletElm.classList.add("bullet")
-        this.bulletElm.style.width = this.width + "1px"
-        this.bulletElm.style.height = this.height + "1px"
+        this.bulletElm.style.width = this.width + "px"
+        this.bulletElm.style.height = this.height + "px"
         this.bulletElm.style.left = this.positionX + "px"
         this.bulletElm.style.bottom = this.positionY + "px"
 
@@ -91,15 +100,10 @@ setInterval(() => {
     const newTarget = new Target();
     targetArr.push(newTarget);
 
-    if(newTarget.positionY < 0 - newTarget.height && newTarget.positionX > 100 - newTarget.width){
-        newTarget.targetElm.remove()
-        targetArr.shift()
-    }
     setTimeout(() => {
         newTarget.targetElm.remove()
         targetArr.shift();
     }, 3000) 
-
 }, 1000);
 
 setInterval(() => {
@@ -109,6 +113,7 @@ setInterval(() => {
 
 
 let counter = 0;
+
 setInterval(() => {
     player.updatePosition();
     bulletArr.forEach((newBullet) => {
@@ -116,17 +121,15 @@ setInterval(() => {
         newBullet.updatePosition();
 
         targetArr.forEach((target) => {
-            const bulletInstance = newBullet.bulletElm.getBoundingClientRect();
-            const targetInstance = target.targetElm.getBoundingClientRect();
-            
             document.getElementById('counter-value').innerHTML = counter
-            
+
             if (
-                bulletInstance.left < targetInstance.right &&
-                bulletInstance.right > targetInstance.left &&
-                bulletInstance.top < targetInstance.bottom &&
-                bulletInstance.bottom > targetInstance.top 
-            ) {
+                newBullet.positionX < target.positionX + target.width &&
+                newBullet.positionX + newBullet.width > target.positionX &&
+                newBullet.positionY < target.positionY + target.height &&
+                newBullet.positionY + newBullet.height > target.positionY
+              ) {
+            
                 newBullet.bulletElm.remove();
                 target.targetElm.remove();
                 bulletArr.shift();
@@ -139,15 +142,15 @@ setInterval(() => {
             }
         });
     });
-}, 5);
+}, 10);
 
 document.addEventListener("keydown", (e) => {
     switch (e.code) {
         case "ArrowUp":
-            player.moveUp()
+            if (player.positionY !== 750){player.moveUp()}
             break;
         case "ArrowDown":
-            player.moveDown()
+            if (player.positionY !== 0){player.moveDown()}
             break;
     }
 })
