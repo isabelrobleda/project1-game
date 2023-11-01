@@ -1,7 +1,7 @@
 class Player {
     constructor(){
-        this.width = 6;
-        this.height = 12;
+        this.width = 4;
+        this.height = 8;
         this.positionX = 0
         this.positionY = 320
 
@@ -29,8 +29,8 @@ class Player {
 
 class Target {
     constructor(){
-        this.width = 3.5;
-        this.height = 9;
+        this.width = 2;
+        this.height = 5;
         this.positionX = Math.floor(Math.random() * (100 - this.width + 1) + (this.width * 2))
         this.positionY = Math.floor(Math.random() * (100 - this.height + 1))
         this.targetElm = null;
