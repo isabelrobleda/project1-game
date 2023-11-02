@@ -9,9 +9,10 @@ OOP game built with web technologies (html, css, javascript) and using DOM manip
 
 ## How to play
 
-- Move llama with arrow keys up and down to hit as many targets as possible
+- Move llama with arrow keys up and down to hit as many CSS logos as possible
 - You can see the amount of spitted targets on the counter on top
-- You can play until 10 targets are spitted 
+- You can play until 5 targets are spitted 
+- Play as many times as you want
 
 
 
@@ -19,9 +20,10 @@ OOP game built with web technologies (html, css, javascript) and using DOM manip
 
 Fix:
 - [x] create if statement when 5 targets spitted, then go to "win" html
-- [ ] remove obstacles as they go outside board
+- [x] remove obstacles as they go outside board
 - [x] prevent player from going outside
-- [ ] fix collision bugs as sometimes it does not count when hitted 
+- [x] fix collision bugs as sometimes it does not count when hitted 
+- [ ] make it responsive
 
 
 
