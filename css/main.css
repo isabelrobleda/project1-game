@@ -24,8 +24,7 @@ h2 {
 #board {
     width: 1280px;
     height: 650px;
-    background-image: url("../images/background_img.png");
-    background-size: contain;
+    background-image: url("../images/background-img.gif");
     overflow: hidden;
     position: relative; 
 }
@@ -42,13 +41,28 @@ h2 {
     background-size: contain;
     background-repeat: no-repeat;
     position: absolute;
-    
+    padding: 0;
+    margin: 0;
+    border: 10 black;
 }
 
 .bullet {
-    background-color: rgb(82, 82, 231);
-    border-radius: 50%;
+    background-image: url("../images/spit.png");
+    background-size: cover;
+    background-repeat: no-repeat;
     position: absolute;
+    padding: 0;
+    margin: 0;
 }
 
 
+@media (max-width: 800px) {
+    #board {
+        width: 600px;
+        height: 400px;
+        background-image: url("../images/background-img.gif");
+        overflow: hidden;
+        position: relative; 
+    }
+}
+  

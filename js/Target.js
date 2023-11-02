@@ -2,7 +2,7 @@ class Target {
     constructor() {
         this.width = 40;
         this.height = 50;
-        this.positionX = Math.floor(Math.random() * (boardWidth) + playerWidth); 
+        this.positionX = Math.floor(Math.random() * (boardWidth - this.width) + playerWidth); 
         this.positionY = Math.floor(Math.random() * (boardHeight - this.height));
         this.targetElm = null;
 

@@ -1,7 +1,7 @@
 class Bullet {
     constructor(positionX, positionY) {
-        this.width = 8;
-        this.height = 8;
+        this.width = 12;
+        this.height = 12;
         this.positionX = positionX + 50;
         this.positionY = positionY + 40;
 
@@ -23,9 +23,8 @@ class Bullet {
 
     updatePosition() {
         this.bulletElm.style.left = this.positionX + "px";
-    }
-
-    moveRight() {
         this.positionX++;
     }
+
+   
 }
