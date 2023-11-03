@@ -1,10 +1,14 @@
 # Project 1 Ironhack: Spitting Llama!
 
-# project1-game
+## Description 
 
-# Description 
+OOP game built with web technologies (html, css, javascript) and using DOM manipulation. It is a shooting game where you have a llama as a player, its spits as bullets, and CSS logos as targets. 
+Functionalities: 
+- Llama player that can move up and down the board
+- Its spits are setup in a time interval
+- The targets are also set up in a time interval where they can appear and dissapear three seconds later, anywhere in the screen  
+- If the spits get the targets before they dissapear, then the user will have a counter on top to measure the amount of targets hit
 
-OOP game built with web technologies (html, css, javascript) and using DOM manipulation
 
 
 ## How to play
@@ -19,11 +23,8 @@ OOP game built with web technologies (html, css, javascript) and using DOM manip
 ## Further Improvements
 
 Fix:
-- [x] create if statement when 5 targets spitted, then go to "win" html
-- [x] remove obstacles as they go outside board
-- [x] prevent player from going outside
-- [x] fix collision bugs as sometimes it does not count when hitted 
 - [ ] make it responsive
+- [ ] add start page
 
 
 
