@@ -9,6 +9,7 @@ Functionalities:
 - The targets are also set up in a time interval where they can appear and dissapear three seconds later, anywhere in the screen  
 - If the spits get the targets before they dissapear, then the user will have a counter on top to measure the amount of targets hit
 
+![Preview image](../project1-game/images/screenshot-game.png)
 
 
 ## How to play
@@ -18,14 +19,14 @@ Functionalities:
 - You can play until 5 targets are spitted 
 - Play as many times as you want
 
+## Demo
 
+https://isabelrobleda.github.io/project1-game/ 
 
 ## Further Improvements
 
-Fix:
 - [ ] make it responsive
 - [ ] add start page
-
-
+- [ ] add more obstacles that should not be spitted
 
 
