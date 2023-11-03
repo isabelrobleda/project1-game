@@ -7,10 +7,7 @@ Functionalities:
 - Llama player that can move up and down the board
 - Its spits are setup in a time interval
 - The targets are also set up in a time interval where they can appear and dissapear three seconds later, anywhere in the screen  
-- If the spits get the targets before they dissapear, then the user will have a counter on top to measure the amount of targets hit
-
-<img src="../project1-game/images/screenshot-game.png"></img>
-
+- If the spits get the targets before they dissapear, then the user will have a counter on top to measure the amount of targets hit.
 
 ## How to play
 
