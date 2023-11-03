@@ -41,7 +41,7 @@ setInterval(() => {
 
         document.getElementById('counter-value').innerHTML = counter
         
-        if (counter === 5) {
+        if (counter === 3) {
             location.href = "../project1-game/win.html" 
         } 
     })

@@ -13,7 +13,7 @@ Functionalities:
 
 - Move llama with arrow keys up and down to hit as many CSS logos as possible
 - You can see the amount of spitted targets on the counter on top
-- You can play until 5 targets are spitted 
+- You can play until 3 targets are spitted 
 - Play as many times as you want
 
 ## Demo
