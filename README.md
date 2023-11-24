@@ -1,4 +1,5 @@
 # Project 1 Ironhack: Spitting Llama!
+![game-image](https://i.imgur.com/XNi6KJ2.png)
 
 ## Description 
 
